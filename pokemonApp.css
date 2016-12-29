@@ -1,0 +1,126 @@
+/*
+ * PokemonApp.css 
+ * Stylesheet for App
+ */
+
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	color: white;
+}
+
+#app-header {
+	position: absoulte;
+	left:0;
+	top:0;
+	height:60px;
+	border-radius: 10px 10px 0 0;
+	background-color: #E37222;
+}
+
+#app-header h1 {
+	font-family: Tahoma, Geneva, sans-serif;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#app-body {
+	font-family: Geneva, sans-serif;
+}
+
+#app-body-left {
+	position: absolute;	
+	left:0;
+	top: 80px;
+	height: 400px;
+	width: 20%;
+	border-radius: 0 0 0 10px; 
+	background-color: #07889B;
+	padding-left: 10px;
+}
+
+#app-body-left label {
+	font-size: 85%;
+}
+
+#app-body-left select {
+	width: 80%;
+}
+
+#app-body-left span {
+	font-size: 75%;
+}
+
+#app-body-left button {
+	margin-left: 70px;
+	margin-top: 80px;
+}
+
+#app-body-left #data_message {
+	color: red;
+	font-style: italic;
+	margin-left: 25px;
+}
+
+#app-body-center {
+	position: absolute;
+	left:20%;
+	top:80px;
+	height: 400px;
+	width:40%;
+	border-radius: 0 0 0 0; 
+	background-color: #66B98F;
+	font-size: 75%;
+}
+
+#app-body-center .info-div {
+	margin-top: 10px;
+}
+
+
+#app-body-center span.info-title {
+	display: inline-block;
+	font-size: 120%;
+	margin-left: 20px;
+	width: 100px;
+}
+
+#app-body-center span.info-value {
+	font-size: 150%;
+	font-style: italic;
+	margin-left: 20px;
+	text-align: right;
+	color: #dbdbdb;
+}
+
+#app-body-center #ability-list {
+	margin-left: 120px;
+	color: #dbdbdb;
+}
+
+#app-body-right {
+	position: absolute;
+	left:60%;
+	top:80px;
+	height: 400px;
+	width: 40%;
+	border-radius: 0 0 10px 0; 
+	background-color: #EEAA7B;
+}
+
+#app-body-right-img {
+	display: block;
+	width: 200px;
+	height: 200px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hidden {
+	display: none;
+}
