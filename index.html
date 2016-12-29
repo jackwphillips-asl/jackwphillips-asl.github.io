@@ -1,75 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>My Weather App</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/addons/p5.dom.min.js"></script>
-</head>
-  <body>
-    <script>
-    // A wind direction vector
-    var wind;
-    // Circle position
-    var position;
-
-    function setup() {
-      createCanvas(720, 200);
-      // Request the data from apixu.com
-      var url = 'https://api.apixu.com/v1/current.json?key=513d8003c8b348f1a2461629162106&q=London';
-      loadJSON(url, gotWeather);
-      // Circle starts in the middle
-      position = createVector(width/2, height/2);
-      // wind starts as (0,0)
-      wind = createVector();
-    }
-
-    function draw() {
-      background(200);
-
-      // This section draws an arrow pointing in the direction of wind
-      push();
-      translate(32, height - 32);
-      // Rotate by the wind's angle
-      rotate(wind.heading() + PI/2);
-      noStroke();
-      fill(255);
-      ellipse(0, 0, 48, 48);
-
-      stroke(45, 123, 182);
-      strokeWeight(3);
-      line(0, -16, 0, 16);
-
-      noStroke();
-      fill(45, 123, 182);
-      triangle(0, -18, -6, -10, 6, -10);
-      pop();
-      
-      // Move in the wind's direction
-      position.add(wind);
-      
-      stroke(0);
-      fill(51);
-      ellipse(position.x, position.y, 16, 16);
-
-      if (position.x > width)  position.x = 0;
-      if (position.x < 0)      position.x = width;
-      if (position.y > height) position.y = 0;
-      if (position.y < 0)      position.y = height;
-    }
-
-    function gotWeather(weather) {
-      // Get the angle (convert to radians)
-      var angle = radians(Number(weather.current.wind_degree));
-      // Get the wind speed
-      var windmag = Number(weather.current.wind_mph);
-      
-      // Display as HTML elements
-      var temperatureDiv = createDiv(floor(weather.current.temp_f) + '&deg;');
-      var windDiv = createDiv("WIND " + windmag + " <small>MPH</small>");
-      
-      // Make a vector
-      wind = p5.Vector.fromAngle(angle);
-    }
-  </script>
-</body>
+	<head>
+		<title>My Pokemon App</title>
+		<link rel="stylesheet" type="text/css" href="pokemonApp.css">
+	</head>
+	<body>
+		<div id="app">
+			<div id="app-header">
+				<h1>Pokemon Finder</h1>
+			</div>
+			
+			
+			<div id="app-body">
+				<div id="app-body-left">
+					<label>Select Pokemon Character</label><br>
+					<select id="info-selection">
+ 						<option value="pikachu">Pikachu</option>
+						<option value="blastoise">Blastoise</option>
+						<option value="charizard">Charizard</option>
+	 	 				<option value="random">Random</option>
+					</select>
+					<br>
+					<br>
+					<label>Select Characteristics</label><br>
+					<input type="checkbox" id="check-hitpoints"  value="hitpoints" onclick="hideDisplays()" checked><span>Hit Points</span><br>
+					<input type="checkbox" id="check-weight"  value="weight" onclick="hideDisplays()" checked><span>Weight</span><br>
+					<input type="checkbox" id="check-speed" value="speed" onclick="hideDisplays()" checked><span>Speed</span><br>
+					<input type="checkbox" id="check-attack"  value="attack" onclick="hideDisplays()" checked><span>Attack</span><br>
+					<input type="checkbox" id="check-defense" value="defense" onclick="hideDisplays()" checked><span>Defense</span><br>
+					<input type="checkbox" id="check-abilities" value="abilities" onclick="hideDisplays()" checked><span>Abilities</span><br>
+					<br>
+					<br>
+					<button onclick="getPokemonData()">Get Pokemon</button>
+					<p id="data_message"></p>
+				</div>	
+				
+				
+				
+				<div id="app-body-center">
+					<div id="div-name" class="info-div"><span class="info-title">Name</span><span class="info-value" id="info-name">Pikachu</span></div>
+					<div id="div-hitpoints" class="info-div"><span class="info-title">Hit Points</span><span class="info-value" id="info-hitpoints">35</span></div>
+					<div id="div-weight" class="info-div"><span class="info-title">Weight</span><span class="info-value" id="info-weight">60</span></div>
+					<div id="div-speed" class="info-div"><span class="info-title">Speed</span><span class="info-value" id="info-speed">90</span></div>
+					<div id="div-attack" class="info-div"><span class="info-title">Attack</span><span class="info-value" id="info-attack">55</span></div>
+					<div id="div-defense" class="info-div"><span class="info-title">Defense</span><span class="info-value" id="info-defense">40</span></div>
+					<div id="div-ability" class="info-div">
+						<span class="info-title">Abilities</span>
+						<ul id="ability-list">
+							<li>Lightning-rod</li>
+							<li>Static</li>
+						</ul>
+					</div>
+					
+					
+				</div>
+				<div id="app-body-right">
+					<img id="app-body-right-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png">
+				</div>
+			</div>
+		</div>
+		
+		<script src="pokemonApp.js"></script>
+	</body>
 </html>
