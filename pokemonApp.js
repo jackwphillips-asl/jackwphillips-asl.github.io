@@ -9,7 +9,7 @@
 function constructPokeURL(id) {
 	var url;
 	
-	url = "http://pokeapi.co/api/v2/pokemon/" + id + "/";
+	url = "https://pokeapi.co/api/v2/pokemon/" + id + "/";
 	
 	return url;
 }
